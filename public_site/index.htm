@@ -33,10 +33,11 @@
 
     <div style="text-align:center">
         <div class="barchart">
-            <svg id="chart" height="700" width="800" style="background: #fff; margin-top:20px"></svg>
+            <svg id="chart" height="700" width="800" style="background: #fff; margin-top:20px; margin-bottom: 20px"></svg>
         </div>
         <div style="text-align:center">
-            <svg id="sf" height="900" width="1000" style="background: #fff; margin-top:50px"></svg>
+            <h2>Tree Species by Location</h2>
+            <svg id="sf" height="900" width="1000" style="background: #fff; margin-top:20px"></svg>
         </div>
 
 
@@ -141,8 +142,6 @@
                 .attr("y", 290)
                 .text("major transportation route");
 
-
-
             let sunset = box.append("text")
                 .attr("fill", "black")
                 .attr("text-anchor", "middle")
@@ -158,7 +157,6 @@
                 .attr("x", 0)
                 .attr("y", 680)
                 .text("popular with runners and cyclists");
-
 
 
             const svg2 = d3.select("#chart");
@@ -188,6 +186,25 @@
 
 
             let leftAxis = d3.axisLeft(countScale);
+
+            chartArea.append("text")
+                .attr("class", "y label")
+                .attr("text-anchor", "end")
+                .attr("y", -80)
+                .attr("x", -chartHeight / 2)
+                .attr("dy", ".75em")
+                .attr("transform", "rotate(-90)")
+                .text("Amount of Trees");
+
+            chartArea.append("text")
+                .attr("class", "x label")
+                .attr("text-anchor", "end")
+                .attr("y", chartHeight + 100)
+                .attr("x", chartWidth / 2)
+                .attr("dy", ".75em")
+                .text("Tree Species");
+
+
             let leftGridlines = d3.axisLeft(countScale)
                 .tickSize(-chartWidth - 10)
                 .tickFormat("");
